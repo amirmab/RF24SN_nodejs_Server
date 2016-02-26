@@ -14,6 +14,7 @@ var argv = require('yargs')
     .example('$0', 'run with the default configuration')
     .example('$0 -b mqtt://localhost:1883 -spi /dev/spidev0.0 -ce 25 -irq 24', 'run with all parameters specified')
 	.alias('b', 'broker')
+	.alias('p', 'pipe')
 	.alias('?', 'help')
 	.alias('v', 'verbose')
 	.count('verbose')
@@ -21,7 +22,7 @@ var argv = require('yargs')
 	.describe('spi', 'device file for the SPI interface')
 	.describe('ce', 'GPIO pin for the CE')
 	.describe('irq', 'GPIO pin for the IRQ')
-    .default({ b : 'mqtt://localhost:1883', spi : '/dev/spidev0.0', ce: 25, irq: 24 })
+    .default({ b : 'mqtt://localhost:1883', spi : '/dev/spidev0.0', ce: 25, irq: 24 ,p:0xF0F0F0F000})
     .argv;
 
 var loggingLevels = ['warn', 'info', 'verbose', 'debug', 'silly'];
